@@ -10,9 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  password String
+// model User {
+//   id       Int    @id @default(autoincrement())
+//   name     String
+//   email    String @unique
+//   password String
+// }
+
+model passportUser {
+  id     String  @id
+  name   String
+  avatar String?
+  tasks  Tasks[]
+}
+
+model Tasks {
+  id            Int          @id @default(autoincrement())
+  task          String?
+  start_time    String?
+  end_time      String?
+  task_duration String?
+  user          passportUser @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id       String
 }
