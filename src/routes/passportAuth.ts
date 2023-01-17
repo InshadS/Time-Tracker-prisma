@@ -61,4 +61,25 @@ router.get('/:id', async (req: any, res: any) => {
   }
 });
 
+router.post('/add-user', async (req: any, res: any) => {
+  try {
+    const { id, name, avatar } = req.body;
+    const userId = req.params.id;
+
+    const addTask = await prisma.passportUser.create({
+      data: {
+        name: name,
+        avatar: avatar,
+        id: id,
+      },
+    });
+
+    console.log(addTask);
+
+    res.status(200).send(addTask);
+  } catch (error: any) {
+    console.error(error.message);
+  }
+});
+
 module.exports = router;

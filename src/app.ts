@@ -5,7 +5,7 @@ require('dotenv').config();
 import passport from 'passport';
 const PORT = process.env.PORT || 5000;
 const taskRoute = require('./routes/tasks');
-const authRoute = require('./routes/passportAuth');
+const authRoute = require('./routes/dbAuth');
 var session = require('express-session');
 
 app.use(express.json());
