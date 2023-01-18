@@ -48,4 +48,4 @@ router.post('/login', async (req: any, res: any) => {
   }
 });
 
-module.exports = router;
+export default router;

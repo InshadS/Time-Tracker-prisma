@@ -76,4 +76,4 @@ router.get('/:id/list-tasks', async (req: any, res: any) => {
   }
 });
 
-module.exports = router;
+export default router;
