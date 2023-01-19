@@ -1,5 +1,6 @@
 const router = require('express').Router({ mergeParams: true });
 const utils = require('../lib/utils');
+import { use } from 'passport';
 import prisma from '../../src/prismaClient';
 
 //Register
@@ -43,6 +44,16 @@ router.post('/login', async (req: any, res: any) => {
     } else {
       res.status(404).json('User not found!');
     }
+  } catch (error: any) {
+    console.error(error.message);
+  }
+});
+
+router.get('/users', async (req: any, res: any) => {
+  try {
+    const users = await prisma.user.findMany();
+
+    res.status(200).send(users);
   } catch (error: any) {
     console.error(error.message);
   }

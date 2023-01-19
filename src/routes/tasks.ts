@@ -65,9 +65,6 @@ router.delete('/delete-task/:id', async (req: any, res: any) => {
 //List all tasks
 router.get('/:id/list-tasks', async (req: any, res: any) => {
   try {
-    const page = req.query.page;
-    const size = req.query.size;
-
     const listTasks = await prisma.tasks.findMany();
 
     res.status(200).send(listTasks);
